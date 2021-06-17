@@ -2,12 +2,39 @@ syntax = "proto3";
 package user.pof.pof;
 
 // this line is used by starport scaffolding # proto/tx/import
+import "pof/cla.proto";
 
 option go_package = "github.com/user/pof/x/pof/types";
 
 // Msg defines the Msg service.
 service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateCla(MsgCreateCla) returns (MsgCreateClaResponse);
+  rpc UpdateCla(MsgUpdateCla) returns (MsgUpdateClaResponse);
+  rpc DeleteCla(MsgDeleteCla) returns (MsgDeleteClaResponse);
 }
 
 // this line is used by starport scaffolding # proto/tx/message
+message MsgCreateCla {
+  string creator = 1;
+  string proof = 2;
+}
+
+message MsgCreateClaResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateCla {
+  string creator = 1;
+  uint64 id = 2;
+  string proof = 3;
+}
+
+message MsgUpdateClaResponse { }
+
+message MsgDeleteCla {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteClaResponse { }

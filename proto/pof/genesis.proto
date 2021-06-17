@@ -2,11 +2,14 @@ syntax = "proto3";
 package user.pof.pof;
 
 // this line is used by starport scaffolding # genesis/proto/import
+import "pof/cla.proto";
 
 option go_package = "github.com/user/pof/x/pof/types";
 
 // GenesisState defines the pof module's genesis state.
 message GenesisState {
     // this line is used by starport scaffolding # genesis/proto/state
+		repeated Cla claList = 1; // this line is used by starport scaffolding # genesis/proto/stateField
+		uint64 claCount = 2; // this line is used by starport scaffolding # genesis/proto/stateField
     // this line is used by starport scaffolding # ibc/genesis/proto
 }

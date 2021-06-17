@@ -1,0 +1,12 @@
+syntax = "proto3";
+package user.pof.pof;
+
+option go_package = "github.com/user/pof/x/pof/types";
+
+import "gogoproto/gogo.proto";
+
+message Cla {
+  string creator = 1;
+  uint64 id = 2;
+  string proof = 3; 
+}

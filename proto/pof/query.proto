@@ -4,12 +4,40 @@ package user.pof.pof;
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
+import "pof/cla.proto";
 
 option go_package = "github.com/user/pof/x/pof/types";
 
 // Query defines the gRPC querier service.
 service Query {
     // this line is used by starport scaffolding # 2
+
+	// Queries a cla by id.
+	rpc Cla(QueryGetClaRequest) returns (QueryGetClaResponse) {
+		option (google.api.http).get = "/user/pof/pof/cla/{id}";
+	}
+
+	// Queries a list of cla items.
+	rpc ClaAll(QueryAllClaRequest) returns (QueryAllClaResponse) {
+		option (google.api.http).get = "/user/pof/pof/cla";
+	}
+
 }
 
 // this line is used by starport scaffolding # 3
+message QueryGetClaRequest {
+	uint64 id = 1;
+}
+
+message QueryGetClaResponse {
+	Cla Cla = 1;
+}
+
+message QueryAllClaRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllClaResponse {
+	repeated Cla Cla = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
